@@ -21,13 +21,12 @@ export const JikkomonGrid = ({ category }) => {
         url: name.url
       }
     })
-    // console.log( jikkomons );
+    // console.log( data );
     setItems( jikkomons )
   }
 
   return (
     <div>
-      <h3> { category } </h3>
         {
           items.map( name => (
             <JikkomonGridItems key={ name } { ...name } />
