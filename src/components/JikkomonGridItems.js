@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-export const JikkomonGridItems = ({ name }) => {
+import '../styles/components/JikkomonGridItems.css'
 
-  const [jikkos, setJikkos] = useState([])
-
-  useEffect(() => {
-    getJikkomons();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const getJikkomons = async() => {
-    const url = `https://pokeapi.co/api/v2/pokemon/${ name }`;
-    const resp = await fetch( url );
-    const data = await resp.json();
-    console.log(data);
-    setJikkos(data);
-  }
-
+export const JikkomonGridItems = ({ name, image }) => {
   return (
-    <div>
-      {
-        jikkos.map( item => (
-          <div>
-            <h2>{item.name}</h2>
-            {/* <img src={item.sprites.back_default} alt={ item.name } /> */}
-          </div>
-        ))
-      }
+    <div className="card">
+      <img className="card-img-top" src={ image } alt=""/>
+      <div className="card-body">
+        <h4 className="card-title"> { name } </h4>
+        <a className="btn btn-primary" href="#">See details</a>
+      </div>
     </div>
   )
 }
+

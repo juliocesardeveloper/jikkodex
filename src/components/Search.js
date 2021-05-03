@@ -1,14 +1,12 @@
 import { useInput } from '../hooks/useInput'
-import PropTypes from 'prop-types'
 
-export const Search = ({ setCategories }) => {
+export const Search = () => {
 
   const { inputValue, setInputValue, handleInputChange } = useInput()
 
   const handleSubmit = ( e ) => {
     e.preventDefault()
     if (inputValue.trim().length > 2) {
-      setCategories( cats => [ inputValue, ...cats] );
       setInputValue('');
     }
   }
@@ -24,8 +22,4 @@ export const Search = ({ setCategories }) => {
       />
     </form>
   )
-}
-
-Search.propTypes = {
-  setCategories: PropTypes.func.isRequired
 }
