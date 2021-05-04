@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { JikkomonGrid } from './components/JikkomonGrid';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 import { JikkomonGridItems } from './components/JikkomonGridItems';
+import { JikkomonModal } from './components/JikkomonModal';
 import { Search } from './components/Search';
 import './JikkodexApp.css';
 
@@ -31,24 +33,29 @@ export const JikkodexApp = () => {
   }, [])
 
   return (
-    <>
+    <Provider store={ store }>
       <h2>Jikkodex App</h2>
       <Search />
       <hr/>
 
-      <div className="grid">
-        {
-          allJikkomons.map( jikkomon => 
-            <JikkomonGridItems
-              name={ jikkomon.name }
-              image={ jikkomon.sprites.other.dream_world.front_default }
-              key={ jikkomon.id }
-            />
-          )
-        }
+      <div className="container">
+        <div className="row">
+          {
+            allJikkomons.map( jikkomon =>
+              <JikkomonGridItems
+                className="col-sm"
+                name={ jikkomon.name }
+                image={ jikkomon.sprites.other.dream_world.front_default }
+                key={ jikkomon.id }
+              />
+            )
+          }
+        </div>
       </div>
 
-      <button>Load more Jikkomons</button>
-    </>
+      <button className="btn btn-secondary">Load more Jikkomons</button>
+      
+      <JikkomonModal />
+    </Provider>
   )
 }

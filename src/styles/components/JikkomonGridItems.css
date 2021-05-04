@@ -1,13 +1,16 @@
 .card {
-  display: flex;
-  align-items: center;
-  margin: 20px;
+  background-color: #FFBA08;
   height: 20rem;
+  margin: 1rem;
   width: 18rem;
 }
 
 .card-img-top {
   height: 12rem;
-  width: 16rem;
-  margin: 10px;
+  margin-bottom: 10px;
+}
+
+.card-header {
+  background-color: #FFBA08;
+  border: none;
 }
