@@ -2,3 +2,17 @@
   height: 93%;
   width: 91%;
 }
+
+.image-details {
+  height: 5rem;
+}
+
+.btn-close {
+  margin-bottom: 5px;
+}
+
+.list-group-item {
+  background-color: #FFBA08;
+  height: 32px;
+  border: none;
+}

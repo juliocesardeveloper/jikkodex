@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
-import { JikkomonDetails } from './JikkomonDetails';
+import { useDispatch, useSelector } from 'react-redux';
+import { uiCloseModal, uiRemoveJikkomonId } from '../actions/ui';
 
 const customStyles = {
   content : {
@@ -15,23 +16,28 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const JikkomonModal = () => {
+export const JikkomonModal = ({ children }) => {
+
+  const dispatch = useDispatch();
+
+  const { openModal } = useSelector(state => state.ui)
 
   const closeModal = () => {
-    
+    dispatch(uiCloseModal());
+    // dispatch(uiRemoveJikkomonId());
   }
 
   return (
     <Modal
-      isOpen={true}
-      onRequestClose={closeModal}
-      style={customStyles}
+      isOpen={ openModal }
+      onRequestClose={ closeModal }
+      style={ customStyles }
       closeTimeoutMS={ 200 }
       className="modal"
       overlayClassName="modal-fondo"
     >
 
-      <JikkomonDetails />
+      { children }
     
     </Modal>
   )
