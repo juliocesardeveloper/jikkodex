@@ -1,11 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 * {
-  font-family: 'Architects Daughter', 'cursive';
+  font-family: 'Nunito', sans-serif;
 }
 
 body {
   padding: 60px;
+  align-items: center;
+}
+
+.main-title {
+  margin-bottom: 50px;
+  text-align: center;
 }
 
 .btn-secondary {

@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { JikkodexApp } from './JikkodexApp';
 import './index.css';
 
-import { JikkodexApp } from './JikkodexApp';
 
 ReactDOM.render(
   <JikkodexApp /> ,

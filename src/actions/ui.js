@@ -13,4 +13,4 @@ export const uiJikkomonData = ( id, name, image, type, abilities )  => ({
     abilities
   }
 });
-// export const uiRemoveJikkomonId = ()  => ({ type: types.uiRemoveJikkomonId });
+

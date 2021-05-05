@@ -8,14 +8,12 @@ export const JikkomonGridItems = ({ id, name, image, type, abilities }) => {
 
 
   const dispatch = useDispatch();
-  // const { jikkomonId, } = useSelector(state => state.ui);
 
   const handleClick = () => {
     dispatch( uiOpenModal() );
     dispatch( uiJikkomonData( id, name, image, type, abilities ) )
 
   }
-
 
   return (
     <div className="rounded card text-center shadow p-3 mb-5">

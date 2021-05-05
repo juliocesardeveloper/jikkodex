@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 import { useDispatch, useSelector } from 'react-redux';
-import { uiCloseModal, uiRemoveJikkomonId } from '../actions/ui';
+import { uiCloseModal } from '../actions/ui';
 
 const customStyles = {
   content : {
@@ -24,7 +24,6 @@ export const JikkomonModal = ({ children }) => {
 
   const closeModal = () => {
     dispatch(uiCloseModal());
-    // dispatch(uiRemoveJikkomonId());
   }
 
   return (
@@ -38,7 +37,7 @@ export const JikkomonModal = ({ children }) => {
     >
 
       { children }
-    
+
     </Modal>
   )
 }
