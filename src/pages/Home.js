@@ -3,13 +3,9 @@
 import { useEffect, useState } from 'react';
 import { store } from '../store/store';
 import { Provider } from 'react-redux';
-import queryString from "query-string";
-// import { Search } from '../components/Search';
 import { JikkomonGridItems } from '../components/JikkomonGridItems';
 import { JikkomonModal } from '../components/JikkomonModal';
 import { JikkomonDetails } from '../components/JikkomonDetails';
-import { useLocation } from 'react-router';
-import { useForm } from '../hooks/useForm';
 
 import '../styles/Home.css';
 
@@ -24,47 +20,27 @@ export const Home = ({ history }) => {
     setLoadMoreJikkomons( data.next )
 
     const createJikkomonObject = ( result ) => {
-      {
-        q.length > 2 ?
-          result.filter( async jikkomon => {
-            const response = await fetch( `https://pokeapi.co/api/v2/pokemon/${ jikkomon.name }` )
-            const data = await response.json()
-            setAllJikkomons( currentListOfJikkomons => [ ...currentListOfJikkomons, data ] )
-          })
-        :
           result.forEach( async jikkomon => {
             const response = await fetch( `https://pokeapi.co/api/v2/pokemon/${ jikkomon.name }` )
             const data = await response.json()
             setAllJikkomons( currentListOfJikkomons => [ ...currentListOfJikkomons, data ] )
           });
       }
-    }
     createJikkomonObject(data.results)
   }
+
   useEffect(() => {
     getAllJikkomons()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const location = useLocation();
-  const { q = '' } = queryString.parse( location.search );
-
-  const [ values, handleInputChange ] = useForm({
-    searchText: q
-  })
-
-  const { searchText } = values;
-
-  const handleSubmit = ( e ) => {
-    e.preventDefault();
-    history.push( `?q=${ searchText }` )
-  }
 
   return (
 
     <Provider store={ store }>
       <div>
         <h1 className="main-title">Jikkodex App</h1>
-        <form onSubmit={ handleSubmit } >
+        <form>
           <div className="input-group mb-3">
             <input
               type="text"
@@ -72,8 +48,6 @@ export const Home = ({ history }) => {
               placeholder="Search your Jikkomon"
               autoComplete="off"
               name="searchText"
-              value={ searchText }
-              onChange={ handleInputChange }
             />
             <button className="btn btn-outline-secondary mt-2 mb-2" type="button" id="button-addon2">Search</button>
           </div>
